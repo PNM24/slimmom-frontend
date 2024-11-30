@@ -1,0 +1,85 @@
+.button {
+  width: 210px;
+  height: 44px;
+  border-radius: 22px;
+  box-shadow: 0px 4px 10px 0px rgba(252, 132, 45, 0.5);
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.5s ease 0s;
+}
+
+/* Variant styles: 1) Multi color button, 2) White button */
+
+/* 1) Multi color button */
+.colorButton {
+  color: rgba(251, 251, 251, 1);
+  background-color: #fc842d;
+}
+
+.colorButton:hover {
+  transform: scale(1.05);
+  background-image: linear-gradient(
+    to right,
+    #ff4500 0%,
+    #ff6347 50%,
+    #ff7f50 100%
+  );
+  background-size: 200%;
+  background-position: right center;
+  transition: all 1s ease 0s;
+}
+
+.colorButton:active {
+  transform: scale(1.08);
+  font-size: 19px;
+}
+
+/* 2) White button */
+.whiteButton {
+  color: #fc842d;
+  background: #fcfcfc;
+  border: solid 2px #fc842d;
+}
+
+.whiteButton:hover {
+  transform: scale(1.05);
+  background-image: linear-gradient(
+    to right,
+    #ffffff 0%,
+    #f0f0f0 50%,
+    #ffffff 100%
+  );
+  background-size: 200%;
+  background-position: right center;
+  transition: all 1s ease 0s;
+}
+
+.whiteButton:active {
+  transform: scale(1.08);
+  font-size: 19px;
+}
+
+/* Size styles */
+.size210 {
+  width: 210px;
+  height: 44px;
+  border-radius: 22px;
+}
+
+.size180 {
+  width: 180px;
+  height: 44px;
+  border-radius: 22px;
+}
+
+.round48 {
+  width: 48px;
+  /* heig768ht: 48px; */
+  font-size: 18px;
+  border-radius: 50%;
+}

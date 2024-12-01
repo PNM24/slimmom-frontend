@@ -1,11 +1,10 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { thunk } from 'redux-thunk';
-import loaderReducer from './reducers/loaderReducer';
+import { configureStore } from '@reduxjs/toolkit';
+import loaderReducer from './loaderReducer';
 
-const rootReducer = combineReducers({
-  loader: loaderReducer,
+const store = configureStore({
+  reducer: {
+    loader: loaderReducer,
+  },
 });
-
-const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default store;

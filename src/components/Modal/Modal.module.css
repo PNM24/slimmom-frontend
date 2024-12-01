@@ -1,0 +1,64 @@
+.modalOverlay {
+  position: fixed;
+  top: 82px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: auto;
+}
+
+.modalContent {
+  position: relative;
+  background: white;
+  width: 100%;
+  height: calc(100vh - 82px);
+}
+
+.modalHeader {
+  background-color: #eff1f3;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-right: 10px;
+  margin-bottom: 40px;
+}
+
+.closeButton::before {
+  content: '⮠'; /* Săgeată pentru mobil */
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modalBody {
+  padding: 20px;
+}
+
+@media (min-width: 768px) {
+  .modalOverlay {
+    align-items: center;
+  }
+
+  .modalContent {
+    width: 672px;
+    height: 532px;
+  }
+
+  .modalHeader {
+    margin-bottom: 0;
+    background-color: white;
+    justify-content: flex-end;
+  }
+  .closeButton::before {
+    content: '✕'; /* Folosim un "X" special pentru tablete */
+  }
+}

@@ -1,0 +1,43 @@
+/* Mobile-first */
+
+.container {
+  
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  height: calc(100vh - 60px);
+  width: 100%;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .background {
+    background-image: url('../../../public/images/tablet/banana.png'),
+      url('../../../public/images/tablet/leaf.png'),
+      url('../../../public/images/tablet/strawberry.png'),
+      url('../../../public/images/tablet/grey.png');
+
+    background-position: right bottom, left bottom, 95% 77%, bottom right;
+    background-size: auto;
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1280px) {
+  .container {
+    margin: 0 auto;
+  }
+  .background {
+    background-image: url('../../../public/images/desktop/banana.png'),
+      url('../../../public/images/desktop/leaf.png'),
+      url('../../../public/images/desktop/strawberry.png'),
+      url('../../../public/images/desktop/grey.png');
+
+    background-position: right top, center top, right bottom, bottom right;
+    background-size: auto;
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+}

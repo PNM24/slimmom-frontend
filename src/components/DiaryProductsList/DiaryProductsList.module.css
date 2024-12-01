@@ -1,0 +1,19 @@
+.list {
+    padding-left: 0;
+    font-size: 14px;
+    margin: 0;
+    padding-bottom: 60px;
+    
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+    .list {
+       
+        padding-bottom: 55px;
+    }
+}
+    
+
+/* Desktop */
+@media (min-width: 1280px) {}

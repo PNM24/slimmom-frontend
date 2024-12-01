@@ -1,0 +1,228 @@
+/* src/components/CalorieForm/CalorieForm.module.css */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 34px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #9b9faa;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #9b9faa;
+  outline: none;
+  font-size: 14px;
+}
+
+.radioGroup {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.radioGroup label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+}
+
+.radioGroup input[type='radio'] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #9b9faa;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  margin-right: 5px;
+}
+
+.radioGroup input[type='radio']::before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: transparent;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+
+.radioGroup input[type='radio']:checked {
+  border-color: #fc842d;
+}
+
+.radioGroup input[type='radio']:checked::before {
+  background-color: #fc842d;
+}
+
+.radioGroup input[type='radio']:checked + span {
+  color: #fc842d;
+}
+
+.modalTitle {
+  padding-right: 45px;
+  margin: 0;
+  font-weight: bold;
+  font-size: 18px;
+  width: 325px;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 42px;
+}
+
+.calorieContainer {
+  text-align: center;
+  font-weight: bold;
+  color: #264061;
+}
+
+.calorieNumber {
+  font-size: 32px; /* Dimensiune și mai mare pentru numărul de calorii */
+}
+
+.calorieUnit {
+  font-size: 14px; /* Dimensiune mai mică pentru unitatea kcal */
+}
+
+.dividerLine {
+  width: 100%;
+  border-bottom: 1px solid #ccc; /* Linie gri */
+  margin-top: 32px; /* Distanța față de calorieValue */
+}
+
+.modalSubtitle {
+  font-weight: bold;
+  font-size: 14px;
+  color: #000;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.forbiddenFoodsList {
+  color: #9b9faa;
+  height: 130px; /* Setăm o înălțime maximă pentru lista de alimente */
+  overflow-y: auto; /* Adăugăm derularea pe axa Y */
+  list-style-type: decimal; /* Setăm stilul listei la numere */
+}
+
+.forbiddenFoodsList li {
+  font-size: 12px;
+  margin-bottom: 10px; /* Adăugăm puțin spațiu între elementele listei */
+  width: 222px;
+  margin: 0 auto;
+}
+
+.modalButtonContainer {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center; /* Poziționează butonul pe mijloc */
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 34px;
+    margin-top: 35px;
+    margin-bottom: 68px;
+    text-align: left;
+    width: 520px;
+  }
+
+  .twoColumns {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .form {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .divider {
+    width: 100%;
+    border-bottom: 1px solid #9b9faa;
+    margin: 24px 0;
+  }
+
+  .formGroup {
+    width: 240px;
+    margin-bottom: 30px;
+  }
+
+  .radioGroup {
+    width: 100%;
+  }
+
+  .modalTitle {
+    font-size: 26px;
+    width: 410px;
+    margin-bottom: 20px;
+  }
+
+  .calorieValue {
+    font-weight: bold;
+    font-size: 32px;
+    text-align: center;
+    color: #264061;
+    margin-top: 10px;
+  }
+
+  .dividerLine {
+    width: 100%;
+    border-bottom: 1px solid #ccc; /* Linie gri */
+    margin-top: 32px; /* Distanța față de calorieValue */
+  }
+
+  .modalSubtitle {
+    font-weight: bold;
+    font-size: 14px;
+    color: #000;
+    margin-top: 20px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 1280px) {
+  .title {
+    margin-top: 100px;
+  }
+
+  .primary {
+    margin-left: 339px;
+  }
+}

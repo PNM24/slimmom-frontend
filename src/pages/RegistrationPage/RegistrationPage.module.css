@@ -1,0 +1,96 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 34px;
+  color: orange;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 35px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #9b9faa;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #9b9faa;
+  outline: none;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.buttonContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .background {
+    background-image: url('../../../public/images/tablet/banana.png'),
+      url('../../../public/images/tablet/leaf-log-reg.png'),
+      url('../../../public/images/tablet/strawberry.png'),
+      url('../../../public/images/tablet/grey.png');
+
+    background-position: right bottom, center 10%, right 70%, bottom right;
+    background-size: auto;
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+  .title {
+    margin: 0;
+    text-align: left;
+    padding-top: 160px;
+    padding-left: 20px;
+    padding-bottom: 35px;
+  }
+  .input {
+    width: 240px;
+  }
+  .buttonContainer {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1280px) {
+  .container {
+    margin: 0 auto;
+  }
+  .background {
+    background-image: url('../../../public/images/desktop/banana.png'),
+      url('../../../public/images/desktop/leaf.png'),
+      url('../../../public/images/desktop/strawberry.png'),
+      url('../../../public/images/desktop/grey.png');
+
+    background-position: right top, center top, right bottom, bottom right;
+    background-size: auto;
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+}

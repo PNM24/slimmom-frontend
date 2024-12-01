@@ -1,0 +1,57 @@
+.item {
+    color: #212121;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 20px;
+    align-items: end;}
+.product {
+    width: 40%;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 8px;
+    
+}
+.grams {
+    width: 49px;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 8px;
+    text-align: right;
+}
+.calorie {
+    width: 60px;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 8px;
+    text-align: right;
+}
+
+.deleteButton {
+    
+    background: none;
+    border: none;
+    color: #9B9FAA;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.deleteButton:hover {
+    color: darkred;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+    .product{
+        min-width: 240px;
+    }
+    .grams{
+        min-width: 106px;
+    }
+    .calorie{
+        min-width: 106px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1280px) {}

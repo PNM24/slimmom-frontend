@@ -14,9 +14,7 @@ function LanguageSwitcher() {
     <div className={styles.language}>
       <select onChange={changeLanguage} defaultValue={i18n.language}>
         <option value="en">English</option>
-        <option value="fr">Français</option>
         <option value="es">Español</option>
-        <option value="de">Deutsch</option>
         <option value="ro">Română</option>
       </select>
     </div>

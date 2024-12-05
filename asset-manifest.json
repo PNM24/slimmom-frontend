@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/slimmom-frontend/static/css/main.ad78653c.css",
+    "main.js": "/slimmom-frontend/static/js/main.4dff8706.js",
+    "static/media/strawberry.png": "/slimmom-frontend/static/media/strawberry.ace41718e48832c3490d.png",
+    "static/media/banana.png": "/slimmom-frontend/static/media/banana.13e57e2ac8d54f01eb28.png",
+    "static/media/leaf.png": "/slimmom-frontend/static/media/leaf.07dbb10770b29ee5cf64.png",
+    "static/media/leaf-log-reg.png": "/slimmom-frontend/static/media/leaf-log-reg.00ff88d6f5b32c0407b8.png",
+    "static/media/summary.png": "/slimmom-frontend/static/media/summary.7887c12ec4fc572fe392.png",
+    "index.html": "/slimmom-frontend/index.html",
+    "main.ad78653c.css.map": "/slimmom-frontend/static/css/main.ad78653c.css.map",
+    "main.4dff8706.js.map": "/slimmom-frontend/static/js/main.4dff8706.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ad78653c.css",
+    "static/js/main.4dff8706.js"
+  ]
+}

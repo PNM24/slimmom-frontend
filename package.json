@@ -2,7 +2,7 @@
   "name": "slim-mom",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://PNM24.github.io/slimmom-frontend",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.6",
     "@testing-library/jest-dom": "^5.16.3",
@@ -11,6 +11,7 @@
     "axios": "^1.7.2",
     "classnames": "^2.5.1",
     "date-fns": "^3.6.0",
+    "gh-pages": "^6.2.0",
     "i18next": "^23.12.1",
     "i18next-browser-languagedetector": "^8.0.0",
     "i18next-http-backend": "^2.5.2",
@@ -34,7 +35,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint:js": "eslint src/**/*.{js,jsx}"
+    "lint:js": "eslint src/**/*.{js,jsx}",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

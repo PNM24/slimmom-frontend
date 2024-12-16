@@ -2,7 +2,8 @@ import axiosInstance from './axios';
 
 // Funcție pentru gestionarea erorilor
 const handleError = error => {
-  const errorMessage = error.response?.data?.message || 'An unexpected error occurred.';
+  console.error('API Error:', error.response || error.message); // Logarea erorii pentru debugging
+  const errorMessage = error.response?.data?.message || 'An unexpected error occurred. Please try again later.';
   throw new Error(errorMessage);
 };
 
@@ -10,9 +11,9 @@ const handleError = error => {
 export const register = async userData => {
   try {
     const response = await axiosInstance.post('/auth/register', userData);
-    return response.data;
+    return response.data; // Returnează datele din răspuns
   } catch (error) {
-    handleError(error);
+    handleError(error); // Gestionează eroarea
   }
 };
 
@@ -20,9 +21,9 @@ export const register = async userData => {
 export const verifyOTP = async verificationData => {
   try {
     const response = await axiosInstance.post('/auth/verify-otp', verificationData);
-    return response.data;
+    return response.data; // Returnează datele din răspuns
   } catch (error) {
-    handleError(error);
+    handleError(error); // Gestionează eroarea
   }
 };
 
@@ -30,9 +31,9 @@ export const verifyOTP = async verificationData => {
 export const resendOTP = async emailData => {
   try {
     const response = await axiosInstance.post('/auth/resend-otp', emailData);
-    return response.data;
+    return response.data; // Returnează datele din răspuns
   } catch (error) {
-    handleError(error);
+    handleError(error); // Gestionează eroarea
   }
 };
 
@@ -40,9 +41,9 @@ export const resendOTP = async emailData => {
 export const login = async userData => {
   try {
     const response = await axiosInstance.post('/auth/login', userData);
-    return response.data;
+    return response.data; // Returnează datele din răspuns
   } catch (error) {
-    handleError(error);
+    handleError(error); // Gestionează eroarea
   }
 };
 
@@ -50,9 +51,9 @@ export const login = async userData => {
 export const logout = async () => {
   try {
     const response = await axiosInstance.post('/auth/logout');
-    return response.data;
+    return response.data; // Returnează datele din răspuns
   } catch (error) {
-    handleError(error);
+    handleError(error); // Gestionează eroarea
   }
 };
 
@@ -60,8 +61,8 @@ export const logout = async () => {
 export const checkAuth = async () => {
   try {
     const response = await axiosInstance.get('/auth/check');
-    return response.data;
+    return response.data; // Returnează datele din răspuns
   } catch (error) {
-    handleError(error);
+    handleError(error); // Gestionează eroarea
   }
 };

@@ -11,18 +11,37 @@ const RegistrationPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const { setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  const validateInputs = () => {
+    if (!name.trim()) return 'Name is required';
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) return 'Invalid email format';
+    if (password.length < 6) return 'Password must be at least 6 characters';
+    return null;
+  };
+
   const handleSubmit = async e => {
     e.preventDefault();
+    const validationError = validateInputs();
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+
+    setIsLoading(true);
+    setError('');
+
     try {
       const data = await register({ name, email, password });
       setAuth({ token: data.token, isAuthenticated: true, user: data.user });
-      console.log('Registered user name:', data.user.name);
-      navigate('/calculator');
+      navigate('/calculator', { replace: true });
     } catch (err) {
-      setError(err.message);
+      setError(err.response?.data?.message || 'Registration failed');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -35,45 +54,55 @@ const RegistrationPage = () => {
       <Header />
       <h2 className={styles.title}>REGISTER</h2>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <label className={styles.label}>
-          Name *
-          <input
-            type="text"
-            value={name}
-            onChange={e => setName(e.target.value)}
-            className={styles.input}
-            required
-          />
-        </label>
-        <label className={styles.label}>
-          Email *
-          <input
-            type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            className={styles.input}
-            required
-          />
-        </label>
-        <label className={styles.label}>
-          Password *
-          <input
-            type="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            className={styles.input}
-            required
-          />
-        </label>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+      <label className={styles.label} htmlFor="name">
+  Name *
+  <input
+    id="name"
+    type="text"
+    value={name}
+    onChange={e => setName(e.target.value)}
+    className={styles.input}
+    required
+  />
+</label>
+<label className={styles.label} htmlFor="email">
+  Email *
+  <input
+    id="email"
+    type="email"
+    value={email}
+    onChange={e => setEmail(e.target.value)}
+    className={styles.input}
+    required
+  />
+</label>
+<label className={styles.label} htmlFor="password">
+  Password *
+  <input
+    id="password"
+    type="password"
+    value={password}
+    onChange={e => setPassword(e.target.value)}
+    className={styles.input}
+    required
+  />
+</label>
+        {error && <p className={styles.error}>{error}</p>}
         <div className={styles.buttonContainer}>
-          <Button type="submit" text="Register" variant="colorButton" />
-          <Button
+          <button
+            type="submit"
+            className={`${styles.button} ${styles.colorButton}`}
+            disabled={isLoading}
+          >
+            {isLoading ? 'Registering...' : 'Register'}
+          </button>
+          <button
             type="button"
-            text="Log in"
-            variant="whiteButton"
-            handlerFunction={handleLogin}
-          />
+            className={`${styles.button} ${styles.whiteButton}`}
+            onClick={handleLogin}
+          >
+            Log in
+          </button>
         </div>
       </form>
     </div>

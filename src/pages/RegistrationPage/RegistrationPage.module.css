@@ -1,52 +1,99 @@
+:root {
+  --color-orange: orange;
+  --color-gray-light: #9b9faa;
+  --color-error: red;
+  --spacing-sm: 8px;
+  --spacing-md: 20px;
+  --spacing-lg: 35px;
+  --font-size-base: 14px;
+  --font-weight-bold: bold;
+}
+
+/* Formulare */
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   box-sizing: border-box;
-  padding: 20px;
+  padding: var(--spacing-md);
 }
 
 .title {
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 34px;
-  color: orange;
-  text-align: center;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
   margin-top: 40px;
-  margin-bottom: 35px;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-orange);
+  text-align: center;
 }
 
 .label {
-  font-size: 14px;
-  font-weight: bold;
-  color: #9b9faa;
-  margin-bottom: 8px;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-gray-light);
+  margin-bottom: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm); /* Spațiu între text și input */
   width: 100%;
 }
 
 .input {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
   width: 100%;
-  padding: 8px;
+  padding: var(--spacing-sm);
   box-sizing: border-box;
   border: none;
-  border-bottom: 1px solid #9b9faa;
+  border-bottom: 1px solid var(--color-gray-light);
   outline: none;
-  font-size: 14px;
-  margin-bottom: 20px;
+  font-size: var(--font-size-base);
 }
+
 
 .buttonContainer {
-  margin-top: 20px;
+  margin-top: var(--spacing-md);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--spacing-md);
 }
 
-/* Tablet */
+.button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.colorButton {
+  background-color: var(--color-orange);
+  color: white;
+}
+
+.colorButton:hover {
+  background-color: darkorange;
+}
+
+.whiteButton {
+  background-color: white;
+  color: var(--color-gray-light);
+  border: 1px solid var(--color-gray-light);
+}
+
+.whiteButton:hover {
+  background-color: var(--color-gray-light);
+  color: white;
+}
+
+.error {
+  color: var(--color-error);
+  font-size: var(--font-size-base);
+  margin-top: var(--spacing-sm);
+}
+
+/* Tablete */
 @media (min-width: 768px) {
   .background {
     background-image: url('../../../public/images/tablet/banana.png'),
@@ -59,16 +106,19 @@
     background-repeat: no-repeat;
     height: 100vh;
   }
+
   .title {
     margin: 0;
     text-align: left;
     padding-top: 160px;
-    padding-left: 20px;
-    padding-bottom: 35px;
+    padding-left: var(--spacing-md);
+    padding-bottom: var(--spacing-lg);
   }
+
   .input {
     width: 240px;
   }
+
   .buttonContainer {
     flex-direction: row;
     align-items: flex-start;
@@ -82,6 +132,7 @@
   .container {
     margin: 0 auto;
   }
+
   .background {
     background-image: url('../../../public/images/desktop/banana.png'),
       url('../../../public/images/desktop/leaf.png'),

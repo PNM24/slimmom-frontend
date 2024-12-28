@@ -6,22 +6,26 @@ const AuthProvider = ({ children }) => {
   const storedToken = localStorage.getItem('token');
   const storedUser = localStorage.getItem('user');
 
-  // Adăugăm verificări suplimentare pentru storedUser
-  let parsedUser = null;
-  try {
-    parsedUser = storedUser ? JSON.parse(storedUser) : null;
-  } catch (e) {
-    console.error('Error parsing user from localStorage:', e);
-  }
+  // Funcție pentru parsarea sigură a JSON-ului
+  const parseUser = (user) => {
+    try {
+      return user ? JSON.parse(user) : null;
+    } catch (e) {
+      console.error('Error parsing user from localStorage:', e);
+      localStorage.removeItem('user'); // Elimină datele corupte
+      return null;
+    }
+  };
 
   const [auth, setAuth] = useState({
     token: storedToken || null,
     isAuthenticated: !!storedToken,
-    user: parsedUser,
+    user: parseUser(storedUser),
   });
 
+  // Salvăm token-ul și user-ul în localStorage atunci când auth se modifică
   useEffect(() => {
-    if (auth.token) {
+    if (auth.token && auth.user) {
       localStorage.setItem('token', auth.token);
       localStorage.setItem('user', JSON.stringify(auth.user));
     } else {
@@ -30,7 +34,9 @@ const AuthProvider = ({ children }) => {
     }
 
     if (auth.user) {
-      console.log('User name:', auth.user.name);
+      console.log('Current User:', auth.user.name);
+    } else {
+      console.log('No user logged in.');
     }
   }, [auth]);
 

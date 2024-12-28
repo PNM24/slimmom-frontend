@@ -1,13 +1,14 @@
-// src/components/DiaryDateCalendar/DiaryDateCalendar.jsx
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from './DiaryDateCalendar.module.css';
 import { FaCalendarAlt } from 'react-icons/fa';
-import { format } from 'date-fns';
+import { format, isValid } from 'date-fns';
 
 const DiaryDateCalendar = ({ selectedDate, onDateChange }) => {
-  const formattedDate = format(selectedDate, 'EEEE dd MMM yyyy');
+  const formattedDate = isValid(selectedDate)
+    ? format(selectedDate, 'EEEE dd MMM yyyy')
+    : 'Invalid Date';
 
   return (
     <div className={styles.datePickerContainer}>

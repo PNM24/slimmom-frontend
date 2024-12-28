@@ -4,15 +4,21 @@ import styles from './DiaryProductsList.module.css';
 
 const DiaryProductsList = ({ products, onDelete }) => {
   return (
-    <ul className={styles.list}>
-      {products.map(product => (
-        <DiaryProductsListItem
-          key={product.consumedProductId}
-          product={product}
-          onDelete={() => onDelete(product.consumedProductId)}
-        />
-      ))}
-    </ul>
+    <div>
+      {products.length > 0 ? (
+        <ul className={styles.list}>
+          {products.map((product) => (
+            <DiaryProductsListItem
+              key={product.consumedProductId}
+              product={product}
+              onDelete={() => onDelete(product.consumedProductId)}
+            />
+          ))}
+        </ul>
+      ) : (
+        <p className={styles.noProducts}>No products added for this day.</p>
+      )}
+    </div>
   );
 };
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import HomePage from '../pages/HomePage/HomePage';
 import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
+import OTPVerification from '../pages/OTPVerification/OTPVerification';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import DiaryPage from '../pages/DiaryPage/DiaryPage';
 import AddProductPage from '../pages/AddProductPage/AddProductPage';
@@ -12,6 +13,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/registration" element={<RegistrationPage />} />
+      <Route path="/verify-otp" element={<OTPVerification />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/diary" element={<DiaryPage />} />
       <Route path="/calculator" element={<Calculator />} />

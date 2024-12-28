@@ -3,8 +3,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './LoginPage.module.css';
 import Button from 'components/Button/Button';
 import Header from 'components/Header/Header';
-import { login } from '../../api/auth.js';
-import { AuthContext } from '../../context/AuthContext.js';
+import { login } from '../../api/auth';
+import { AuthContext } from '../../context/AuthContext';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -15,14 +15,15 @@ const LoginPage = () => {
   const location = useLocation();
   const redirectTo = location.state?.from || '/calculator';
 
-  const handleLogin = async e => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setError('');
     try {
       const data = await login({ email, password });
       setAuth({ token: data.token, isAuthenticated: true, user: data.user });
       navigate(redirectTo);
     } catch (err) {
-      setError(err.message);
+      setError('Failed to log in. Please check your credentials.');
     }
   };
 
@@ -40,7 +41,7 @@ const LoginPage = () => {
           <input
             type="email"
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             className={styles.input}
             required
           />
@@ -50,12 +51,12 @@ const LoginPage = () => {
           <input
             type="password"
             value={password}
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             className={styles.input}
             required
           />
         </label>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {error && <p className={styles.error}>{error}</p>}
         <div className={styles.buttonContainer}>
           <Button type="submit" text="Log in" variant="colorButton" />
           <Button

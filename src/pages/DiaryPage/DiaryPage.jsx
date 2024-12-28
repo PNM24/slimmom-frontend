@@ -1,4 +1,3 @@
-// src/components/DiaryPage/DiaryPage.jsx
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -27,23 +26,23 @@ const DiaryPage = () => {
     if (auth.isAuthenticated) {
       const fetchConsumedProducts = async () => {
         try {
-          const response = await axios.get(
-            'http://localhost:3000/api/products/day-info',
-            {
-              params: { date: selectedDate.toISOString() },
-              headers: {
-                Authorization: `Bearer ${auth.token}`,
-              },
-            }
-          );
-          const consumedProducts = response.data.consumedProducts.map(cp => ({
+          const response = await axios.get('/api/products/day-info', {
+            params: { date: selectedDate.toISOString() },
+            headers: {
+              Authorization: `Bearer ${auth.token}`,
+            },
+          });
+
+          const consumedProducts = response.data.consumedProducts.map((cp) => ({
             ...cp.productId,
             grams: cp.quantity,
             consumedProductId: cp._id,
           }));
+
           setConsumedProducts(consumedProducts);
         } catch (error) {
           console.error('Error fetching consumed products:', error);
+          alert('Failed to load consumed products. Please try again.');
         }
       };
 
@@ -57,10 +56,10 @@ const DiaryPage = () => {
     }
   };
 
-  const handleSaveProduct = async product => {
+  const handleSaveProduct = async (product) => {
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/products/consumed',
+        '/api/products/consumed',
         {
           productId: product._id,
           date: selectedDate,
@@ -73,7 +72,7 @@ const DiaryPage = () => {
         }
       );
 
-      setConsumedProducts(prevProducts => [
+      setConsumedProducts((prevProducts) => [
         ...prevProducts,
         {
           ...product,
@@ -83,24 +82,25 @@ const DiaryPage = () => {
       ]);
     } catch (error) {
       console.error('Error saving consumed product:', error);
+      alert('Failed to save product. Please try again.');
     }
   };
 
-  const handleDeleteProduct = async productId => {
+  const handleDeleteProduct = async (productId) => {
     try {
-      await axios.delete(
-        `http://localhost:3000/api/products/consumed/${productId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${auth.token}`,
-          },
-        }
-      );
-      setConsumedProducts(prevProducts =>
-        prevProducts.filter(product => product.consumedProductId !== productId)
+      await axios.delete(`/api/products/consumed/${productId}`, {
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+        },
+      });
+      setConsumedProducts((prevProducts) =>
+        prevProducts.filter(
+          (product) => product.consumedProductId !== productId
+        )
       );
     } catch (error) {
       console.error('Error deleting consumed product:', error);
+      alert('Failed to delete product. Please try again.');
     }
   };
 

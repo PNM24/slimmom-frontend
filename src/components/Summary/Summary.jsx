@@ -10,7 +10,6 @@ const Summary = ({ selectedDate }) => {
   const { calorieInfo } = useContext(CalorieInfoContext);
   const { consumedProducts } = useContext(ConsumedProductsContext);
 
-  // Setăm data curentă ca dată implicită
   const currentDate = new Date();
   const validSelectedDate = isValid(selectedDate) ? selectedDate : currentDate;
 
@@ -19,7 +18,6 @@ const Summary = ({ selectedDate }) => {
   }, 0);
 
   const formattedDate = format(validSelectedDate, 'EEEE dd MMM yyyy');
-
   const consumedPercentage = calorieInfo
     ? (totalConsumedCalories / calorieInfo.dailyRate) * 100
     : 0;
@@ -34,7 +32,7 @@ const Summary = ({ selectedDate }) => {
             </p>
             <p className={styles.summary}>
               {t('left')}{' '}
-              {Math.round(calorieInfo.dailyRate - totalConsumedCalories)} kcal
+              {Math.max(0, Math.round(calorieInfo.dailyRate - totalConsumedCalories))} kcal
             </p>
             <p className={styles.summary}>
               {t('consumed')} {Math.round(totalConsumedCalories)} kcal
@@ -53,9 +51,7 @@ const Summary = ({ selectedDate }) => {
 
       <section className={styles.notRec}>
         <p className={styles.title}>{t('food_not_recommended')}</p>
-        {calorieInfo &&
-        calorieInfo.notRecommendedFoods &&
-        calorieInfo.notRecommendedFoods.length > 0 ? (
+        {calorieInfo?.notRecommendedFoods?.length > 0 ? (
           <ul className={styles.list}>
             {calorieInfo.notRecommendedFoods.map((food, index) => (
               <li key={index}>{food}</li>

@@ -8,12 +8,17 @@ const handleError = error => {
 };
 
 // Funcție pentru înregistrare
-export const register = async userData => {
+export const register = async ({ name, email, password }) => {
   try {
-    const response = await axiosInstance.post('/auth/register', userData);
-    return response.data; // Returnează datele din răspuns
+    const response = await axiosInstance.post('/auth/register', {
+      name,
+      email,
+      password,
+    });
+    return response.data; // Returnează datele răspunsului
   } catch (error) {
-    handleError(error); // Gestionează eroarea
+    console.error('Error during registration:', error.message);
+    throw error;
   }
 };
 

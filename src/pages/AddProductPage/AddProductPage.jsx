@@ -1,4 +1,3 @@
-// src/components/AddProductPage/AddProductPage.jsx
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -13,13 +12,13 @@ const AddProductPage = () => {
   const { setConsumedProducts } = useContext(ConsumedProductsContext);
   const navigate = useNavigate();
 
-  const handleSaveProduct = async product => {
+  const handleSaveProduct = async (product) => {
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/products/consumed',
+        '/api/products/consumed',
         {
           productId: product._id,
-          date: new Date(), // Putem utiliza data curentă aici
+          date: new Date(),
           quantity: product.grams,
         },
         {
@@ -29,7 +28,7 @@ const AddProductPage = () => {
         }
       );
 
-      setConsumedProducts(prevProducts => [
+      setConsumedProducts((prevProducts) => [
         ...prevProducts,
         {
           ...product,
@@ -41,6 +40,7 @@ const AddProductPage = () => {
       navigate('/diary');
     } catch (error) {
       console.error('Error saving consumed product:', error);
+      alert('Failed to save product. Please try again.');
     }
   };
 

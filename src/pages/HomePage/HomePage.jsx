@@ -8,8 +8,12 @@ const HomePage = () => {
   return (
     <div className={`${styles.container} ${styles.background}`}>
       <Header />
-      <LanguageSwitcher />
-      <CalorieForm />
+      <div className={styles.languageSwitcher}>
+        <LanguageSwitcher />
+      </div>
+      <div className={styles.calorieForm}>
+        <CalorieForm />
+      </div>
     </div>
   );
 };
